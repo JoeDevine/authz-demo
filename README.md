@@ -6,7 +6,9 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 ## Architecture
 
-The below diagram illustrates the architecture of the resources deployed as part of this demo stack.
+The below diagram illustrates a _very_ high level overview of the architecture of the resources deployed as part of this demo stack.
+
+![Architecture of Demo Authorisation Stack](https://d2908q01vomqb2.cloudfront.net/ca3512f4dfa95a03169c5a670a4c91a19b3077b4/2021/04/26/srihap_custom_lambda_f2.png)
 
 ## Getting Started
 
