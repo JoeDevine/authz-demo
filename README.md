@@ -2,8 +2,6 @@
 
 This repo contains a CDK app with an instance of a stack (`AuthzDemoStack`) which contains a lambda exposed via API Gateway with a custom Authoriser built with OPA.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
-
 ## Architecture
 
 The below diagram illustrates a _very_ high level overview of the architecture of the resources deployed as part of this demo stack.
