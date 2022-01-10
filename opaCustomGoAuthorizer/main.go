@@ -52,7 +52,7 @@ func handler(request events.APIGatewayCustomAuthorizerRequestTypeRequest) (event
     start := time.Now()
     // Create a new query that uses the compiled policy from above.
     rego := rego.New(
-        rego.Query("data.opablog.allow"),
+        rego.Query("data.opademo.allow"),
         rego.Compiler(compiler),
         rego.Store(store),
         rego.Input(
