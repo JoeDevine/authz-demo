@@ -1,7 +1,7 @@
 {
   "GroupPermissions": {
-    "record1": ["ViewerGroup", "AdminGroup", "Guest"],
-    "record2": ["ViewerGroup", "AdminGroup"],
+    "users": ["ViewerGroup", "AdminGroup", "Guest"],
+    "staff": ["ViewerGroup", "AdminGroup"],
     "record_secret": ["AdminGroup"]
   }
 }

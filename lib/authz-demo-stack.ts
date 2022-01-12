@@ -24,6 +24,7 @@ export class AuthzDemoStack extends cdk.Stack {
           apigw.IdentitySource.header('Usergroup'),
           apigw.IdentitySource.header('Resource'),
         ],
+        resultsCacheTtl: cdk.Duration.minutes(0),
       },
     );
 

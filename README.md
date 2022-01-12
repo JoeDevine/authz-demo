@@ -33,6 +33,39 @@ cdk deploy
 
 _note:_ For guidance on installing cdk locally and connecting to your environment visit the [AWS Getting Started Guide](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html)
 
+## Test Setup
+
+To test the setup you can show that users with no token cannot access the `/example` endpoint, whereas users with either `guest` or `admin` tokens can access a get on the endpoint. First setup required environment variables:
+
+```
+export GUEST_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiZ3Vlc3QiLCJzdWIiOiJZV3hwWTJVPSIsIm5iZiI6MTUxNDg1MTEzOSwiZXhwIjoxNjQxMDgxNTM5fQ.K5DnnbbIOspRbpCr2IKXE9cPVatGOCBrBQobQmBmaeU
+export ADMIN_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJzdWIiOiJZbTlpIiwibmJmIjoxNTE0ODUxMTM5LCJleHAiOjE2NDEwODE1Mzl9.WCxNAveAVAdRCmkpIObOTaSd0AJRECY2Ch2Qdic3kU8
+```
+
+Now test the following scenarios.
+
+No token:
+
+```
+curl -i <API>
+```
+
+GUEST token:
+
+```
+curl -i -H "Authorization: Bearer $GUEST_TOKEN" <API>
+```
+
+```
+curl -i -H "Authorization: Bearer $GUEST_TOKEN" <API> \--header 'usergroup: ViewerGroup' \--header 'resource: users'
+```
+
+ADMIN token:
+
+```
+curl -i -H "Authorization: Bearer $ADMIN_TOKEN" <API>
+```
+
 ### Useful Commands
 
 - `npm run build` compile typescript to js
@@ -44,3 +77,7 @@ _note:_ For guidance on installing cdk locally and connecting to your environmen
 - `make deps` installs the required dependencies to compile the custom Go Authoriser
 - `make clean` removes the previously compiled Go code
 - `make opabuild` compiles the Authoriser and includes the files provided in the data folder
+
+```
+
+```

@@ -44,9 +44,11 @@ func handler(request events.APIGatewayCustomAuthorizerRequestTypeRequest) (event
 
     usergroup := request.Headers["usergroup"]
     resource := request.Headers["resource"]
+    token := request.Headers["token"]
 
     fmt.Println("usergroup is = ", usergroup)
     fmt.Println("resource is = ", resource)
+    fmt.Println("token is = ", token)
 
     // Run evaluation.
     start := time.Now()
@@ -59,6 +61,7 @@ func handler(request events.APIGatewayCustomAuthorizerRequestTypeRequest) (event
             map[string]interface{}{
                 "Usergroup": usergroup,
                 "Resource":  resource,
+                "Token": token,
             }),
     )
 
