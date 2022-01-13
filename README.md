@@ -93,7 +93,3 @@ This is demonstrative of how not only policy, but role mapping can be updated, m
 - `make deps` installs the required dependencies to compile the custom Go Authoriser
 - `make clean` removes the previously compiled Go code
 - `make opabuild` compiles the Authoriser and includes the files provided in the data folder
-
-```
-
-```
