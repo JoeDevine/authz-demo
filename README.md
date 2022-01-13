@@ -53,18 +53,34 @@ curl -i <API>
 GUEST token:
 
 ```
-curl -i -H "Authorization: Bearer $GUEST_TOKEN" <API>
+curl -i <API> \--header 'token: $GUEST_TOKEN'
 ```
 
 ```
-curl -i -H "Authorization: Bearer $GUEST_TOKEN" <API> \--header 'usergroup: ViewerGroup' \--header 'resource: recordA'
+curl -i <API> \--header 'usergroup: ViewerGroup' \--header 'resource: recordA' \--header 'token: $GUEST_TOKEN'
 ```
 
 ADMIN token:
 
 ```
-curl -i -H "Authorization: Bearer $ADMIN_TOKEN" <API>
+curl -i <API>  \--header 'usergroup: ViewerGroup' \--header 'resource: recordA' \--header 'token: $ADMIN_TOKEN'
 ```
+
+You should see that the first command fails with a `401` status code, whereas the the second two should should succesfully return a valid `200` response. This is because of the default policy declared in `./opaCustomGoAuthorizer/data/policies.rego` leveraging the example data stored in the file `./opaCustomGoAuthorizer/data/data.json`. Try altering the data in `data.json` to make both succesful calls fail as shown:
+
+```
+{
+  "GroupPermissions": {
+    "recordA": ["AdminGroup", "Guest"],
+    "recordB": ["ViewerGroup", "AdminGroup"],
+    "record_secret": ["AdminGroup"]
+  }
+}
+```
+
+Here we have removed `ViewerGroup` from the list of groups who have permission to access 'Record A'. Once you recompile and redeploy the code via `make opabuild && cdk deploy`, you should see that both of the previously successful calls now fail with `unauthorised`. However, you are still able to access 'Record B' by changing the value in `\--header 'resource: recordA'` as we kept the group permissions for Record B the same.
+
+This is demonstrative of how not only policy, but role mapping can be updated, modified and enforced in an abstracted form from the application code, providing improved maintainability, governance, consistency, improved auditability as well as vasstly improved experience for the developers when implementing authorisation.
 
 ### Useful Commands
 
