@@ -57,7 +57,7 @@ curl -i -H "Authorization: Bearer $GUEST_TOKEN" <API>
 ```
 
 ```
-curl -i -H "Authorization: Bearer $GUEST_TOKEN" <API> \--header 'usergroup: ViewerGroup' \--header 'resource: users'
+curl -i -H "Authorization: Bearer $GUEST_TOKEN" <API> \--header 'usergroup: ViewerGroup' \--header 'resource: recordA'
 ```
 
 ADMIN token:

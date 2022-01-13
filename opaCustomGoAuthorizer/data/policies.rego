@@ -4,6 +4,7 @@ default allow=false
 
 allow {
     is_jwt_valid
+    is_valid_group
 }
 
 is_valid_group {
